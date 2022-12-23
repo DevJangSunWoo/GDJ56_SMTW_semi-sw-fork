@@ -17,7 +17,7 @@
             <div><a href="<%=request.getContextPath()%>/admin/memberList.do"><p>관리자 페이지</p></a></div>
             <div><a href="<%=request.getContextPath()%>/admin/memberList.do"><p>회원 관리</p></a></div>
             <div><a href="<%=request.getContextPath()%>/admin/qnaManage.do"><p>Q&A 관리</p></a></div>
-            <div><a href="<%=request.getContextPath()%>/admin/noteReceive.do"><p id="purple">쪽지함</p></a></div>
+            <div><a href="<%=request.getContextPath()%>/admin/noteReceive.do?id=ADMIN"><p id="purple">쪽지함</p></a></div>
         </div>
         
         <div class="menuDiv"></div>
@@ -53,7 +53,7 @@
                 	for(Note n : list){
                 %>
                		<tr>
-                    	<td><input type="checkbox" name="" id=""></td>
+                    	<td><input type="checkbox" name="check" id="" value="<%=n.getNtNo() %>"></td>
                     	<td>
                     		<p><%=n.getSenderName() %></p>
 	                    	<form name="form" action="" method="post">
@@ -94,7 +94,7 @@
 
 
             <div id="postcontroll">
-                <button>삭제하기</button>
+                <button onclick="noteDeleteClick();">삭제하기</button>
                 <!-- <button onclick="window.open('mypage-pop_sendnote.html','_blank','scrollbars=yes,width=600,height=600,top=100,left=300')">쪽지보내기</button> -->
             </div>
             
@@ -384,5 +384,27 @@
 		        }, 500);
 		    }).scroll();
 		});
+		
+	    function noteDeleteClick(){
+			var checkBoxArr=[];
+			$("input:checkbox[name='check']:checked").each(function(){
+				checkBoxArr.push($(this).val());
+				console.log(checkBoxArr);
+			});
+			$.ajax({
+				type:"POST",
+				url : "<%=request.getContextPath()%>/mypage/mypageNoteDelete.do",
+				data : {
+					checkBoxArr : checkBoxArr
+				},
+				success : function(result){
+					alert("삭제 완료");
+					history.go(0);
+				},
+				error:function(xhr, status, error){
+					alert("실패");
+				}
+			});
+		}
     </script>
 <%@include file="/views/common/footer.jsp" %>
