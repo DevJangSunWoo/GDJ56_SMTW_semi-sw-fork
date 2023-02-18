@@ -1,20 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/review.css" />
-
-
 <!-- 부트스트랩 CSS -->
-
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <!-- 부트스트랩 JS -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
 <link
 	href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400&display=swap"
 	rel="stylesheet">
@@ -29,19 +22,14 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 <!-- include summernote css/js -->
 <link
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
-
 <%@include file="/views/community/enrollReviewHeader.jsp"%>
 
-
-<!-- 가운데 섹션 부분!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <section id="review-container">
 	<div>
 		<form id="reviewfrm"
@@ -60,35 +48,27 @@
 					<td><select name="reviewNation" required id="nation"
 						class="form-select" aria-label="Default select example"
 						style="box-shadow: 0 4px 2px -2px rgba(221, 160, 221, 0.304) !important;">
-
-							<!-- <input  name="reviewNationValue"  type="hidden"> -->
-
 							<option selected>분류</option>
 							<option value="네덜란드">네덜란드</option>
 							<option value="스웨덴">스웨덴</option>
 							<option value="이스라엘">이스라엘</option>
 							<option value="포르투칼">포르투칼</option>
-
 							<option value="뉴질랜드">뉴질랜드</option>
 							<option value="스페인">스페인</option>
 							<option value="이탈리아">이탈리아</option>
 							<option value="폴란드">폴란드</option>
-
 							<option value="대만">대만</option>
 							<option value="아르헨티나">아르헨티나</option>
 							<option value="일본">일본</option>
 							<option value="프랑스">프랑스</option>
-
 							<option value="덴마크">덴마크</option>
 							<option value="아일랜드">아일랜드</option>
 							<option value="체코">체코</option>
 							<option value="헝가리">헝가리</option>
-
 							<option value="독일">독일</option>
 							<option value="영국">영국</option>
 							<option value="칠레">칠레</option>
 							<option value="호주">호주</option>
-
 							<option value="벨기에">벨기에</option>
 							<option value="오스트리아">오스트리아</option>
 							<option value="캐나다">캐나다</option>
@@ -116,25 +96,12 @@
 						<div class="cont">
 							<textarea style="width: 100%;" style="height:auto;"
 								name="summernote" id="summernote" placeholder="내용 입력"></textarea>
-							<!-- rows="10" cols="100" -->
 						</div>
 					</th>
 				</tr>
-				<!-- <tr>
-                    <th>비밀글</th>
-                    <td>
-                        <input type="radio" name="secret" id="open">
-                        <label for="open">공개글</label>
-                        <input type="radio" name="secret" id="close">
-                        <label for="close">비밀글</label>
-                    </td>
-                </tr> -->
 				<input type="submit" style="display: none">
-
 			</table>
 			<div class="bt_wrap">
-				<!-- <a href="">취소</a> -->
-				<!-- <a  onclick="chk_form(this.form))" href="" class="on">등록</a> -->
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 					<button onclick="enroll_review(this.form);"
 						class="customBtn btnStyle btn btn-primary" type="button"
@@ -145,7 +112,6 @@
 						style="background-color: rgba(221, 160, 221, 0.508) !important;"
 						value="취소">&nbsp취소&nbsp</button>
 				</div>
-
 			</div>
 		</form>
 	</div>
@@ -158,14 +124,11 @@
     		return false;
     	}	
 		
-		
-		
 		if(document.getElementById("nation").select=='selected'){
     		alert("나라를 선택해주십시오.");
     		return false;
     	} 
-		
-		
+				
 		if(document.getElementById("city").value==''){
     		alert("도시를 입력해주십시오.");
     		return false;
@@ -177,24 +140,16 @@
 		
     	 } 
     	
-    	
-		
-	
-		
-		
     	if(document.getElementById("summernote").value==''){
     		alert("텍스트를 입력해주십시오.");
     		return false;
     	}
     	
-    	
-		
 			let answer;
 			answer=confirm("리뷰를 등록하시겠습니까?");
 			if(answer==true){
 				f.submit();
-			}
-		
+			}		
 	}
     
     function cancel_review(url){
@@ -202,9 +157,6 @@
 	/community/reviewBasic.do");
 	}
 </script>
-
-
-
 
 <script>
 	$(function() {
@@ -282,9 +234,6 @@ table#tbl-review td {
 }
 </style>
 
-
-
-
 <style>
 section {
 	border: 0px solid tomato;
@@ -311,7 +260,4 @@ section>div {
 	/* 섹션 안의 div테두리 */
 }
 </style>
-
-<!-- 여기까지!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
 <%@include file="/views/common/footer.jsp"%>
