@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap" rel="stylesheet">
-<!--  <script src="js/jquery-3.6.1.min.js"></script> -->
+<script src="<%=request.getContextPath()%>/js/jquery-3.6.1.min.js"></script>
 <!-- include libraries(jQuery, bootstrap) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -16,7 +16,8 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-<script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
+<!--ck editor4-->
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/ckeditor/ckeditor.js"></script>
 <%@include file="/views/community/enrollReviewHeader.jsp" %>
 <section id="review-container">
     <div>
@@ -77,19 +78,22 @@
         <tr>
             <th colspan="2">
                 <div class="cont">
-                <!--ck editor 5  -->
-                  <!--   <textarea name="text" id="editor"></textarea> -->
+                <!--ck editor 5  -->                
+                 <!--   <textarea name="text" id="editor"></textarea> -->
                  <!--summernote 에디터  -->
-                 <!--   <textarea  style="width:100%;"  style="height:auto;"   name="summernote" id="summernote" placeholder="내용 입력">
-                    </textarea>  -->
-                    <tr><th>내용</th>
-		<td><textarea id="content" name="food_content"></textarea>
-		<script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
-			CKEDITOR.replace('content',
-			{filebrowserUploadUrl:'/food/imageUpload.do'
-			});
-		</script></td>
-	</tr>
+                 <textarea  style="width:100%;"  style="height:auto;"   name="summernote" id="summernote" placeholder="내용 입력">
+                    </textarea>
+                    <tr>
+                    	<th>내용</th>
+					<td>						
+						<%-- <textarea id="content" name="summernote"></textarea>
+						<script type="text/javascript">	// 글쓰기 editor 및 사진 업로드 기능
+							CKEDITOR.replace('content',
+							{filebrowserUploadUrl:'<%=request.getContextPath()%>/community/enrollReviewEnd.do'
+							});
+						</script> --%>
+					</td>
+					</tr>
                 </div>
             </th>
         </tr>       
@@ -136,10 +140,11 @@
 	alert("만족도를 입력해주십시오.");
 	return false;	
    	 } 
-   	if(document.getElementById("summernote").value==''){
+   	/*summernote*/
+   	/*  if(document.getElementById("content").value==''){
    		alert("텍스트를 입력해주십시오.");
    		return false;
-   	}
+   	} */
 	let answer;
 	answer=confirm("리뷰를 등록하시겠습니까?");
 	if(answer==true){
